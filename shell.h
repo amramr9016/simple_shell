@@ -12,7 +12,7 @@
 #include <errno.h>
 #include <fcntl.h>
 
-#define DELIM " \t\n"
+#define DELIM "\t\n"
 
 extern char **environ;
 
@@ -32,7 +32,7 @@ char *_strcpy(char *dest, char *src);
 void free_array_of_string(char **arr);
 void print_error(char *name, char *cmd, int idx);
 char *_itoa(int n);
-void reverse_string(char *str, ing len);
+void reverse_string(char *str, int len);
 
 
 #endif
