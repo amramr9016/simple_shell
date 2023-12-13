@@ -20,11 +20,11 @@ int main(int ac, char **argv)
 	write(STDOUT_FILENO, "\n", 1);
 	return (status);
 	}
-	idx++;
 
+	idx++;
 	command = tokenizer(line);
 	if (!command)
-	continue;
+		continue;
 
 	status = _execute(command, argv, idx);
 	}
