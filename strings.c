@@ -1,75 +1,71 @@
 #include "shell.h"
 
-char *_strdup(const char *str)
+/**
+ * _strcpy - Copy a string from source to destination.
+ * @destination: Pointer to the destination buffer
+ * @source: Pointer to the source string.
+ *
+ * Return: A pointer to the destination buffer.
+ */
+char *_strcpy(char *destination, const char *source)
 {
-	char *ptr;
-	int i, len = 0;
+	char *oDestination = destination;
 
-	if (str == NULL)
-	return (NULL);
-
-	while (str[len])
-	len++;
-
-	ptr = malloc(sizeof(char) * (len + 1));
-	if (ptr == NULL)
-	return (NULL);
-	for (i = 0; i <= len; i++)
-	ptr[i] = str[i];
-	return (ptr);
-}
-
-int _strcmp(char *s1, char *s2)
-{
-	int cmp;
-
-	cmp = (int)*s1 - (int)*s2;
-	while (*s1)
+	while ((*destination++ = *source++) != '\0')
 	{
-	if (*s1 != *s2)
-	break;
-	s1++;
-	s2++;
-	cmp = (int)*s1 - (int)*s2;
 	}
-	return (cmp);
+
+	return (oDestination);
 }
 
-int _strlen(char *s)
+/**
+ * _strcat - Concatenate two strings.
+ * @destination: Pointer to the destination buffer.
+ * @source: Pointer to the source string.
+ *
+ * Return: A pointer to the destination buffer.
+ */
+char *_strcat(char *destination, char *source)
 {
-	int len = 0;
+	char *original_destination = destination;
+	int destination_length = 0;
+	int source_length = 0;
 
-	while (s[len])
-	len++;
-	return (len);
-}
+	destination_length = str_length(destination);
+	source_length = str_length(source);
 
-char *_strcat(char *dest, char *src)
-{
-	char *p = dest;
-
-	while (*p)
-	p++;
-
-	while (*src)
+	if (destination_length + source_length + 1 > str_length(original_destination))
 	{
-	*p = *src;
-	p++;
-	src++;
+		destination = realloc(destination, destination_length + source_length + 1);
+	if (!destination)
+	{
+		return (NULL);
 	}
-	*p = '\0';
-	return (dest);
+	}
+
+	_strcpy(destination + destination_length, source);
+	return (original_destination);
 }
 
-char *_strcpy(char *dest, char *src)
+/**
+ * _strcmp - Compare two strings.
+ * @str1: First string.
+ * @str2: Second string.
+ *
+ * Return: 0 if strings are equal,
+ * positive if str1 is greater, negative if str2 is greater.
+ */
+int _strcmp(const char *str1, const char *str2)
 {
-	int i = 0;
-
-	while (src[i])
+	while (*str1 != '\0' && *str2 != '\0')
 	{
-	dest[i] = src[i];
-	i++;
+		if (*str1 != *str2)
+		{
+			return (*str1 - *str2);
+		}
+		str1++;
+		str2++;
 	}
-	dest[i] = '\0';
-	return (dest);
+
+	return (*str1 - *str2);
 }

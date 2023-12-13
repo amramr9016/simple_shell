@@ -1,33 +1,34 @@
 #include "shell.h"
-int _execute(char **command, char **argv, int idx)
+
+/**
+ * exec - function that execute the command
+ * @argv: array of the command
+ *
+ * Return: void
+*/
+
+void *exec(char **argv)
 {
-	char *full_cmd;
-	pid_t child;
-	int status;
+	char *line = NULL, *rel_line = NULL;
 
-	full_cmd = _getpath(command[0]);
-	if (!full_cmd)
+	if (!argv)
 	{
-	print_error(argv[0], command[0], idx);
-	free_array_of_string(command);
-	return (127);
+		return (NULL);
 	}
 
-	child = fork();
-	if (child == 0)
-	{
-	if (execve(full_cmd, command, environ) == -1)
-	{
-	free(full_cmd), full_cmd = NULL;
-	free_array_of_string(command);
-	}
-	}
-	else
-	{
-	waitpid(child, &status, 0);
-	free_array_of_string(command);
-	free(full_cmd), full_cmd = NULL;
+	line = argv[0];
+	rel_line = path_finder(line);
 
+	if (!rel_line)
+	{
+
+		free(line);
+		return (NULL);
 	}
-	return (WEXITSTATUS(status));
+	if (execve(rel_line, argv, NULL) == -1)
+	{
+		perror("execve failed");
+	}
+	free(rel_line);
+	return (NULL);
 }

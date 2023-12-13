@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,29 +9,34 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <errno.h>
-#include <fcntl.h>
-
-#define DELIM "\t\n"
 
 extern char **environ;
+/*****exec.c*****/
+void *exec(char **argv);
 
-char *read_line(void);
-char **tokenizer(char *line);
-int _execute(char **command, char **argv, int idx);
-char *_getenv(char *variable);
-char *_getpath(char *command);
+/*****_fork.c*****/
+int _fork(char **new_argv);
 
 
-char *_strdup(const char *str);
-int _strcmp(char *s1, char *s2);
-int _strlen(char *s);
-char *_strcat(char *dest, char *src);
-char *_strcpy(char *dest, char *src);
+/*****helper_string.c*****/
+int str_length(char *string);
+char *str_duplicate(char *string);
+char *_strchr(const char *str, int c);
+int _strncmp(const char *str1, const char *str2, size_t n);
 
-void free_array_of_string(char **arr);
-void print_error(char *name, char *cmd, int idx);
-char *_itoa(int n);
-void reverse_string(char *str, int len);
+/*****more_helper_string.c*****/
+char *_strcpy(char *destination, const char *source);
+char *_strcat(char *destination, char *source);
+int _strcmp(const char *str1, const char *str2);
 
+
+/*****prints_help.c****/
+int _print(char *string);
+void print_env(char *env[]);
+
+/*****main.c*****/
+char **token(char **argv, char *getin, size_t size);
+char *path_finder(char *command);
+char **cleanup_and_exit(char **argv, char *c_getin);
 
 #endif
