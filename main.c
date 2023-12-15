@@ -1,4 +1,4 @@
-#include <shell.h>
+#include "shell.h"
 /*
  * main - simple sell main function
  * @ac: count of argumnets
@@ -11,6 +11,7 @@ int main(int ac, char **argv)
 	/*char **command = NULL;*/
 	int status = 0;
 	(void) ac;
+	(void) argv;
 
 	while (1)
 	{
