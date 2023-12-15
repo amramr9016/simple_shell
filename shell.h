@@ -32,6 +32,8 @@ char **tokenizer(char *line);
 int _execute(char **command, char **argv);
 
 /* free_array.c */
-void free_array(char **arr);
+void release_strings(char **string_array);
+
+
 #endif
 

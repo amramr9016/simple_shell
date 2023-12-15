@@ -1,16 +1,16 @@
 #include "shell.h"
 
-void free_array(char **arr)
-{
-	int i;
-	if (!arr)
-		return;
+void release_strings(char **string_array) {
+  int index;
+  if (!string_array) {
+    return;
+  }
 
-	for (i = 0; arr[i]; i++)
-	{
-		free(arr[i]);
-	       	arr[i] = NULL;
-	}
+  for (index = 0; string_array[index]; ++index) {
+    free(string_array[index]);
+    string_array[index] = NULL;
+  }
 
-	free(arr), arr = NULL;
+  free(string_array);
+  string_array = NULL;
 }

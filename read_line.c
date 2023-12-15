@@ -2,18 +2,18 @@
 
 char *read_line(void)
 {
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t n;
+	char *user_input = NULL;
+	size_t line_length = 0;
+	ssize_t read_length;
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
-	n = getline(&line, &len, stdin);
-	if (n == -1)
+	read_length = getline(&user_input, &line_length, stdin);
+	if (read_length == -1)
 	{
-		free(line);
+		free(user_input);
 		return (NULL);
 	}
 
-	return (line);
+	return (user_input);
 }
