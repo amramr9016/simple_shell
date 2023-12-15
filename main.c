@@ -8,7 +8,7 @@
 int main(int ac, char **argv)
 {
 	char *line = NULL;
-	/*char **command = NULL;*/
+	char **command = NULL;
 	int status = 0;
 	(void) ac;
 	(void) argv;
@@ -16,13 +16,16 @@ int main(int ac, char **argv)
 	while (1)
 	{
 		line = read_line();
-		if (line == NULL) 
+		if (line == NULL)
+		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			return (status);
+		}
+		free(line);
 
-		printf("%s", line);
+		command = tokenizer(line);
 
-		/*command = tokenizer(line);
-
-		status = _execute(command, argv);*/
+		/*status = _execute(command, argv);*/
 	}
 }
