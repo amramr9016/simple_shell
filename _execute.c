@@ -7,7 +7,7 @@ int _execute(char **command, char **argv)
 	child = fork();
 	if (child == 0)
 	{
-		if (exexve(command[0], command, envrion) == -1)
+		if (execve(command[0], command, environ) == -1)
 		{
 			perror(argv[0]);
 			free_array(command);
