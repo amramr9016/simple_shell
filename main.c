@@ -8,7 +8,7 @@
 int main(int ac, char **argv)
 {
 	char *line = NULL;
-	char **command = NULL;
+	/*char **command = NULL;*/
 	int status = 0;
 	(void) ac;
 
@@ -18,8 +18,10 @@ int main(int ac, char **argv)
 		if (line == NULL) 
 			return (status);
 
-		command = tokenizer(line);
+		printf("%s", line);
 
-		status = _execute(command, argv);
+		/*command = tokenizer(line);
+
+		status = _execute(command, argv);*/
 	}
 }
