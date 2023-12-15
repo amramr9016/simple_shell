@@ -27,6 +27,9 @@ int main(int ac, char **argv)
 		if (!command)
 			continue;
 
+		for (i = 0; comand[i]; i++)
+			printf("%s\n", command[i]);
+
 		/*status = _execute(command, argv);*/
 	}
 }
