@@ -11,6 +11,8 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#define DELIM " \t\n"
+
 /* main.c */
 char *read_line(void);
 
@@ -21,6 +23,6 @@ int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 
-
-
+/* tokenizer.c */
+char **tokenizer(char *line;)
 #endif
