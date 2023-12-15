@@ -11,6 +11,7 @@ int _execute(char **command, char **argv)
 		{
 			perror(argv[0]);
 			free_array(command);
+			exit(0);
 		}
 
 	}
