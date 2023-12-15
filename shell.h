@@ -24,5 +24,5 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 
 /* tokenizer.c */
-char **tokenizer(char *line;)
+char **tokenizer(char *line;);
 #endif
