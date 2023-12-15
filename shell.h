@@ -11,5 +11,6 @@
 #include <errno.h>
 #include <fcntl.h>
 
+char *read_line(void);
 
 #endif
