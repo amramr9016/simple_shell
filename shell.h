@@ -12,6 +12,8 @@
 #include <fcntl.h>
 
 #define DELIM " \t\n"
+extern char **environ;
+
 
 /* main.c */
 char *read_line(void);
@@ -25,5 +27,11 @@ char *_strcpy(char *dest, char *src);
 
 /* tokenizer.c */
 char **tokenizer(char *line);
+
+/* _execute.c */
+int _execute(char **command, char **argv);
+
+/* free_array.c */
+void free_array(char **arr);
 #endif
 
