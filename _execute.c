@@ -20,5 +20,5 @@ int _execute(char **command, char **argv)
 		waitpid(process_id, &exit_status, 0);
 		release_strings(command);
 	}
-	return(WEXITSTATUS(exit_status));
+	return (WEXITSTATUS(exit_status));
 }
